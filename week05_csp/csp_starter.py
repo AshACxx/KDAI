@@ -71,7 +71,7 @@ constraints = [
 def is_valid_assignment(assignment):
     """Return True if a complete OR partial assignment is valid."""
     # TODO:
-    # 1. Loop over neighbouring pairs in constraints.a
+    # 1. Loop over neighbouring pairs in constraints.
     for place1, place2 in constraints:
         if place1 in assignment and place2 in assignment:
             if assignment[place1] == assignment[place2]:
@@ -127,6 +127,9 @@ def backtracking_search(assignment):
     # 6. Otherwise remove the temporary assignment (backtrack).
     # 7. Return None if every colour fails.
     pass
+    if len(assignment) == len(variables):
+        if is_valid_assignment(assignment):
+            return assignment.copy()
 
 
 # --------------------------------------------------
