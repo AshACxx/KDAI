@@ -71,7 +71,12 @@ constraints = [
 def is_valid_assignment(assignment):
     """Return True if a complete OR partial assignment is valid."""
     # TODO:
-    # 1. Loop over neighbouring pairs in constraints.
+    # 1. Loop over neighbouring pairs in constraints.a
+    for place1, place2 in constraints:
+        if place1 in assignment and place2 in assignment:
+            if assignment[place1] == assignment[place2]:
+                return False
+    return True 
     # 2. If BOTH regions have been assigned, compare their colours.
     # 3. Return False if neighbouring regions have the same colour.
     # 4. Otherwise return True.
