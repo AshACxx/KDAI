@@ -130,6 +130,9 @@ def backtracking_search(assignment):
     if len(assignment) == len(variables):
         if is_valid_assignment(assignment):
             return assignment.copy()
+        return None
+        
+
 
 
 # --------------------------------------------------
