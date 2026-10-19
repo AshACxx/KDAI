@@ -91,6 +91,7 @@ def select_unassigned_variable(assignment):
     """Choose the next unassigned region.
 
     Task 3: First return the FIRST unassigned region.
+    
 
     Task 5: Replace that approach with MRV (Minimum Remaining Values):
     choose the unassigned region with the FEWEST currently legal
@@ -99,7 +100,11 @@ def select_unassigned_variable(assignment):
     # TASK 3 TODO:
     # Return the first variable not in assignment, or None if all
     # variables have been assigned.
-    #
+    for variable in variables:
+        if variable not in assignment:
+            return variable
+    return None
+
     # TASK 5 TODO (after backtracking works):
     # For each unassigned variable, temporarily try each colour,
     # check is_valid_assignment(), and undo the temporary assignment.
