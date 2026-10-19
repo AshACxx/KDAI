@@ -131,6 +131,12 @@ def backtracking_search(assignment):
         if is_valid_assignment(assignment):
             return assignment.copy()
         return None
+
+    variables = select_unassigned_variable(assignment)
+
+    for colour in domains[variable]:
+        assignment[variable] = colour
+
         
 
 
