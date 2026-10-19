@@ -158,7 +158,7 @@ def backtracking_search(assignment):
 
             del assignment[variable]
 
-        return None
+    return None
 
         
 
