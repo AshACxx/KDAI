@@ -70,6 +70,10 @@ def available_moves(state):
     """Return indices of empty cells (0 through 8)."""
     # TODO: Find every position containing " ".
     moves = []
+    for i in range(9):
+        if state[i] == " ":
+            moves.append(i)
+    return moves
 
 
 # --------------------------------------------------
