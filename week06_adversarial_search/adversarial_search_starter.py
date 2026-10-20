@@ -56,7 +56,9 @@ def print_board(state):
     # TODO: Print three rows of three cells.
     for row in range(3):
         cell = state[row * 3 : row *3 + 3] 
-        print("|")
+        print("|".join(cell))
+        if row < 2:
+            print("--------")
 
 
 
