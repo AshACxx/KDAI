@@ -86,7 +86,9 @@ def make_move(state, move, player):
     Assume move is legal. Do not modify the input board.
     """
     # TODO: Copy the board and place the player's mark.
-    pass
+    new_state = state.copy()
+    new_state[move] = player
+    return new_state
 
 
 # --------------------------------------------------
