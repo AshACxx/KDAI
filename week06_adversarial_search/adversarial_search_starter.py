@@ -99,7 +99,7 @@ def check_winner(state):
     """Return 'X', 'O' or None by checking all winning lines."""
     # TODO: Check each (a, b, c) in WINNING_LINES.
     for a, b, c in WINNING_LINES:
-        if state[a] == state[b] == state[c]:
+        if state[a] == state[b] == state[c] and state[a] != " ":
             return state[a]
     return None
 
