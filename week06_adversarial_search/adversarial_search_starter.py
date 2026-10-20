@@ -69,7 +69,7 @@ def print_board(state):
 def available_moves(state):
     """Return indices of empty cells (0 through 8)."""
     # TODO: Find every position containing " ".
-    pass
+    moves = []
 
 
 # --------------------------------------------------
