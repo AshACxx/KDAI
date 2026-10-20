@@ -156,6 +156,14 @@ def minimax(state, maximizing, counter):
         return utility(state)
     
     # 3. For X (MAX), recursively choose the highest score.
+
+    if maximizing:
+        for moves in available_moves(state):
+            child = make_move(state, moves, "X")
+            score = minimax(child, False, counter)
+            best = max(best,score)
+        return best
+
     # 4. For O (MIN), recursively choose the lowest score.
     # Use make_move() to avoid changing the original board.
     
