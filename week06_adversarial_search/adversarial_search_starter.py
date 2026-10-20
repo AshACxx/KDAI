@@ -111,7 +111,12 @@ def check_winner(state):
 def is_terminal(state):
     """Return True for a win or a full board (draw)."""
     # TODO: Detect a winner OR no remaining empty cells.
-    pass
+    if check_winner(state) is not None:
+        return True
+    if " " not in state:
+        return True
+    return False
+
 
 
 # --------------------------------------------------
@@ -124,7 +129,12 @@ def utility(state):
     Minimax calls this only at terminal states.
     """
     # TODO: Use check_winner() and return +1, -1 or 0.
-    pass
+    winner = check_winner(state):
+    if winner == "X":
+        return 1
+    if winner == "0":
+        return -1 
+    return 0
 
 
 # --------------------------------------------------
@@ -139,11 +149,16 @@ def minimax(state, maximizing, counter):
     """
     # TODO:
     # 1. Count this node: counter["nodes"] += 1.
-    # 2. If terminal, return utility(state).
+    counter["nodes"] += 1
+
+    # 2. If terminal, return utility(state). #terminal means if the game is over
+    if is_terminal(state):
+        return utility(state)
+    
     # 3. For X (MAX), recursively choose the highest score.
     # 4. For O (MIN), recursively choose the lowest score.
     # Use make_move() to avoid changing the original board.
-    pass
+    
 
 
 # --------------------------------------------------
