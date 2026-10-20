@@ -224,8 +224,28 @@ def alpha_beta(state, maximizing, alpha, beta, counter):
     if is_terminal(state):
         return utility(state)
 
-    best = -float("inf") #start at - infinitey so any score beats it
+
     if maximizing:
+        best = -float("inf") #start at - infinitey so any score beats it
+        for move in available_moves(state):
+            child = make_move(state, move, "X")
+            score = alpha_beta(child, False, alpha, beta, counter)
+            best = max(best, score)
+            alpha = max(alpha, best)
+            if alpha >= beta:
+                break
+        return best
+    else:
+            
+        best = float("inf")
+        for move in available_moves(state):
+            child = make_move(state, move, "O")
+            score = alpha_beta(child, True, alpha, beta, counter)
+            best = min(best, score)
+            beta = min(beta, best)
+            if alpha >= beta:
+                break
+        return best
 
 
 # --------------------------------------------------
@@ -237,7 +257,25 @@ def best_move_alpha_beta(state, counter):
     # TODO: Like best_move(), but call alpha_beta().
     # Start alpha at -infinity and beta at +infinity.
     # Update alpha after each candidate X move.
-    pass
+    if is_terminal(state):
+        return None
+
+    alpha = -float("inf")
+    beta = float("inf")
+    best_score = -float("inf")
+    best_choice = None
+
+    for move in available_moves(state):
+        child = make_move(state, move, "X")
+        score = alpha_beta(child, False, alpha, beta, counter)
+
+        if score > best_score:
+            best_score = score
+            best_choice = move
+
+        alpha = max(alpha, best_score)
+
+    return best_choice
 
 
 # --------------------------------------------------
