@@ -132,7 +132,7 @@ def utility(state):
     winner = check_winner(state):
     if winner == "X":
         return 1
-    if winner == "0":
+    if winner == "O":
         return -1 
     return 0
 
@@ -156,14 +156,20 @@ def minimax(state, maximizing, counter):
         return utility(state)
     
     # 3. For X (MAX), recursively choose the highest score.
-
+    best = -float("inf") #start at - infinitey so any score beats it
     if maximizing:
         for moves in available_moves(state):
-            child = make_move(state, moves, "X")
+            child = make_move(state, moves, "X") #creating a copy of the table indepdent from the main tabke to add X
             score = minimax(child, False, counter)
             best = max(best,score)
         return best
-
+    else:
+        best = -float("inf")
+        for moves in available_moves(state):
+            child = make_move(state, moves, "O")
+            score = minimax(child, True, counter)
+            best = min(best,score)
+        return best
     # 4. For O (MIN), recursively choose the lowest score.
     # Use make_move() to avoid changing the original board.
     
@@ -181,7 +187,12 @@ def best_move(state, counter):
     # TODO: Try each legal X move, call minimax() for O's turn,
     # and return the move with the highest score.
     # If the board is terminal, return None.
-    pass
+    if is_terminal(state):
+        return None
+    best_score = -float('inf')
+    best_choice = None
+
+    
 
 
 # --------------------------------------------------
