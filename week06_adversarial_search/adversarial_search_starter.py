@@ -192,7 +192,17 @@ def best_move(state, counter):
     best_score = -float('inf')
     best_choice = None
 
-    
+    for moves in available_moves(state):
+        child = make_move(state, moves, 'X')
+        score = minimax(child, False, counter)
+
+        if score > best_score:
+            best_score = score
+            best_choice = moves
+
+    return best_choice
+
+
 
 
 # --------------------------------------------------
