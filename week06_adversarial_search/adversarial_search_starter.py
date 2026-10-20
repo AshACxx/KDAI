@@ -211,7 +211,7 @@ def best_move(state, counter):
 
 def alpha_beta(state, maximizing, alpha, beta, counter):
     """Return the same score as Minimax, pruning irrelevant branches.
-
+    
     alpha = best score MAX can guarantee so far.
     beta  = best score MIN can guarantee so far.
     """
@@ -219,7 +219,13 @@ def alpha_beta(state, maximizing, alpha, beta, counter):
     # - MAX updates alpha; MIN updates beta.
     # - Stop exploring remaining moves if alpha >= beta.
     # - Count visited nodes exactly as in minimax().
-    pass
+    counter['nodes'] += 1
+
+    if is_terminal(state):
+        return utility(state)
+
+    best = -float("inf") #start at - infinitey so any score beats it
+    if maximizing:
 
 
 # --------------------------------------------------
